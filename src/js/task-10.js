@@ -12,8 +12,8 @@ const refs = {
 const createBoxes = function (amount) {
   const items = [...Array((Number(amount)) + 1).keys()].slice(1).map((el) => {
     const item = document.createElement("div");
-    item.style.height = `${30 + 10 * el}px`
-    item.style.width = `${30 + 10 * el}px`
+    item.style.height = `${30 + 10 * (el - 1)}px`
+    item.style.width = `${30 + 10 * (el - 1)}px`
     item.style.backgroundColor = getRandomHexColor()
 
     return item;

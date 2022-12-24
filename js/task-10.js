@@ -12,10 +12,16 @@ const refs = {
 const createBoxes = function (amount) {
   const items = [...Array((Number(amount)) + 1).keys()].slice(1).map((el) => {
     const item = document.createElement("div");
-    item.style.height = `${30 + 10 * (el - 1)}px`
-    item.style.width = `${30 + 10 * (el - 1)}px`
     item.style.backgroundColor = getRandomHexColor()
-
+    
+    if (!refs.div.lastElementChild) {
+      item.style.height = `${30 + 10 * (el - 1)}px`
+      item.style.width = `${30 + 10 * (el - 1)}px`
+    } else {
+      item.style.height = `${ Number.parseInt(refs.div.lastElementChild.style.height) +10*el }px`
+      item.style.width = `${ Number.parseInt(refs.div.lastElementChild.style.width) +10*el }px`
+    }
+    
     return item;
   });
 
@@ -28,6 +34,6 @@ const removeBoxes = function () {
 };
 
 refs.createBtn.addEventListener('click', () => createBoxes(refs.input.value));
-refs.destroyBtn.addEventListener('click', () => removeBoxes());
+refs.destroyBtn.addEventListener('click', removeBoxes);
 
 

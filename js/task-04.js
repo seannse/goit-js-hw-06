@@ -17,15 +17,18 @@ const refs = {
     // targBtn: document.querySelector('[data-action="target"]'),
 };
 
-refs.decrBtn.addEventListener('click', () => {
-    counter.decrement();
-    refs.valueEl.textContent = counter.value;
-})
+const onIncrBtnClick = function () {
+   counter.increment();
+   refs.valueEl.textContent = counter.value; 
+}
 
-refs.incrBtn.addEventListener('click', () => {
-    counter.increment();
-    refs.valueEl.textContent = counter.value;
-})
+const onDecrBtnClick = function () {
+   counter.decrement();
+   refs.valueEl.textContent = counter.value; 
+}
+
+refs.decrBtn.addEventListener('click', onDecrBtnClick);
+refs.incrBtn.addEventListener('click', onIncrBtnClick);
 
 // refs.incrBtn.addEventListener('click', (event) => {
 //     console.log('targBtn has eventListener');
